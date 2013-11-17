@@ -34,7 +34,7 @@
 
 {% if not is_popup %}
 {% block breadcrumbs %}
-<ul class="breadcrumb">
+<ul class="breadcrumb list-inline">
 <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
 <!--<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a> <span class="divider">/</span></li>-->
 <li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{  app_label|title }}</a> <span class="divider">/</span></li>
@@ -46,12 +46,12 @@
 {% block coltype %}flex{% endblock %}
 
 {% block object-tools %}
-    <ul class="object-tools form-inline pull-left inline">
+    <ul class="object-tools form-inline pull-left list-inline">
         {% block object-tools-items %}
         {% if has_add_permission %}
         <li>
-        <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary">
-            <i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+        <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-default btn btn-default-primary">
+            <i class="glyphicon glyphicon-plus glyphicon glyphicon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
         </a>
         </li>
         {% endif %}
@@ -82,8 +82,8 @@
 <form class="" id="changelist-form" action="" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}
 
 {% if cl.formset.errors %}
-<div class="row-fluid">
-    <div class="alert alert-error">
+<div class="row">
+    <div class="alert alert-danger">
         <p class="errornote">
             {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
         </p>
@@ -92,15 +92,15 @@
 </div>
 {% endif %}
 
-<div class="row-fluid">
+<div class="row">
 
     {% with app_name=cl.opts.module_name|lower|slugify %}
         {% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_"|add:app_name|add:"_description.html" "" %}
     {% endwith %}
 
-    <div class="span12">
+    <div class="col-md-12">
 
-        <div id="content-main" class="row-fluid">
+        <div id="content-main" class="row">
             <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
                 {% block date_hierarchy %}
                     {% date_hierarchy cl %}
@@ -116,7 +116,7 @@
             </div>
         </div>
         {# {% if cl.formset and cl.result_count %} #}
-        <div class="row-fluid">
+        <div class="row">
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="form-inline pull-left">
@@ -125,7 +125,7 @@
                         {% endif %}
                     </div>
                     <div class="pull-right">
-                        <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
+                        <input type="submit" name="_save" class="btn btn-default btn btn-default-primary default" value="{% trans 'Save' %}"/>
                     </div>
                 </div>
             </div>

@@ -61,8 +61,8 @@
 
 {% block content_title %}
 
-{% if folder.can_have_subfolders %}<a id="id_new_folder" href="{% url 'admin:filer-directory_listing-make_root_folder' %}?parent_id={{ folder.id }}" class="btn btn-primary" onclick="return showAddAnotherPopup(this);" title="{% trans "Adds a new Folder" %}">{% trans "New Folder" %}</a>{% endif %}
-<a id="id_upload_button" href="#" class="btn" title="{% trans 'upload files' %}">{% trans 'Upload' %}</a>
+{% if folder.can_have_subfolders %}<a id="id_new_folder" href="{% url 'admin:filer-directory_listing-make_root_folder' %}?parent_id={{ folder.id }}" class="btn btn-default btn btn-default-primary" onclick="return showAddAnotherPopup(this);" title="{% trans "Adds a new Folder" %}">{% trans "New Folder" %}</a>{% endif %}
+<a id="id_upload_button" href="#" class="btn btn-default" title="{% trans 'upload files' %}">{% trans 'Upload' %}</a>
 {% include 'admin/filer/tools/upload_button_js.html' %}
 
 {% include "admin/filer/tools/search_form.html" %}
@@ -70,7 +70,7 @@
 {% endblock %}
 {% block content %}
 
-    <div class="span9">
+    <div class="col-md-9">
 <div id="content-main">
     
     <div class="module" id="changelist">
@@ -82,7 +82,7 @@
             <span>
                 {% if is_popup %}
                     {% if select_folder and folder.file_type == 'Folder' %}<a class="insertlink insertlinkButton" href="" onclick="opener.dismissRelatedFolderLookupPopup(window, {{ folder.id }}, '{{ folder.pretty_logical_path }}'); return false;" >&nbsp;</a>{% endif %}
-                {% else %}<a style="display: block; float: right;" class="btn btn-mini changelink" href="{% url 'admin:filer_folder_change' folder.id %}" title="{% trans "Change current folder details" %}">{% trans "Change" %}</a>{% endif %}
+                {% else %}<a style="display: block; float: right;" class="btn btn-default btn btn-default-mini changelink" href="{% url 'admin:filer_folder_change' folder.id %}" title="{% trans "Change current folder details" %}">{% trans "Change" %}</a>{% endif %}
             </span>
         </h1>
         {% else %}{% if folder.is_smart_folder %}

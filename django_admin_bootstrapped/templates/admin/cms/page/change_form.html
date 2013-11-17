@@ -87,7 +87,7 @@ fieldset.collapsed h2,
 
 	{% else %}
 
-	<span class="brand">{{ title }}
+	<span class="navbar-brand">{{ title }}
 	{% if CMS_MODERATOR %}
 		{% if moderation_required %}<span class="moderation-requires-approvement">{% blocktrans %}(requires approvement at {{ moderation_level }} level){% endblocktrans %}</span>
 		{% else %}<span>{% trans '(you can perform actions on this page directly)' %}</span>
@@ -102,17 +102,17 @@ fieldset.collapsed h2,
 {% if change %}{% if not is_popup %}
   <div class="pull-right">
 	{% if moderation_delete_request %}
-		<a href="remove-delete-state/" class="btn approvelink">{% trans "Remove delete request" %}</a>
+		<a href="remove-delete-state/" class="btn btn-default approvelink">{% trans "Remove delete request" %}</a>
 	{% endif %}
 	{% if moderator_should_approve %}
-		<a href="approve/" class="btn approvelink">{% if moderation_delete_request %}{% trans "Approve delete" %}{% else %}{% trans "Approve" %} {% trans "draft" %}{% endif %}</a>
-		<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page.get_absolute_url }}?preview&draft=1" class="btn previewdraftlink">{% trans "Preview" %} {% trans "draft" %}</a>
+		<a href="approve/" class="btn btn-default approvelink">{% if moderation_delete_request %}{% trans "Approve delete" %}{% else %}{% trans "Approve" %} {% trans "draft" %}{% endif %}</a>
+		<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page.get_absolute_url }}?preview&draft=1" class="btn btn-default previewdraftlink">{% trans "Preview" %} {% trans "draft" %}</a>
 	{% endif %}
 	
-	<a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
+	<a href="history/" class="btn btn-default btn btn-default-inverse historylink">{% trans "History" %}</a>
   
   {% if has_absolute_url %}
-  	<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page|preview_link:language }}?preview" class="btn viewsitelink">{% trans "View on site" %}</a>
+  	<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page|preview_link:language }}?preview" class="btn btn-default viewsitelink">{% trans "View on site" %}</a>
   {% endif %}
   </div>
 {% endif %}{% endif %}
@@ -289,8 +289,8 @@ fieldset.collapsed h2,
 {% if add %}
 	<div class="form-actions"{% if is_popup %} style="overflow: auto;"{% endif %}>
 		<div class="pull-right">
-			<button type="submit" name="_continue" class="btn" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>
-			<button type="submit" name="_save" class="btn btn-primary" {{ onclick_attrib }}>{% trans 'Save' %}</button>
+			<button type="submit" name="_continue" class="btn btn-default" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>
+			<button type="submit" name="_save" class="btn btn-default btn btn-default-primary" {{ onclick_attrib }}>{% trans 'Save' %}</button>
 		</div>
 	</div>
 {% else %}

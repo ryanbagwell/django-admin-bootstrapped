@@ -84,11 +84,11 @@ div#sitemap a:hover {
 {% block object-tools %}
 
   {% if has_recover_permission %}
-    <a href="recover/" class="btn recoverlink">{% blocktrans with cl.opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</a>
+    <a href="recover/" class="btn btn-default recoverlink">{% blocktrans with cl.opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</a>
   {% endif %}
 
   {% if has_add_permission %}
-    <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary addlink"><i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
+    <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn btn-default btn btn-default-primary addlink"><i class="glyphicon glyphicon-plus glyphicon glyphicon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
   {% endif %}
   
   {% include "admin/cms/page/loading.html" %}

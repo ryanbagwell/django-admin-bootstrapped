@@ -1,0 +1,32 @@
+{% if field.is_checkbox %}
+    
+    <label for="{{ field.field.id_for_label }}" class="col-sm-2 control-label">{{ field.field.label }}</label>
+
+    <div class="col-sm-1">
+
+      <div class="checkbox">
+        <label for="{{ field.field.id_for_label }}" class="">
+
+            {{ field.field }}
+          
+        </label>
+      </div>
+    </div>
+
+
+
+{% else %}
+    <label for="{{ field.field.id_for_label }}" class="col-sm-2 control-label">{{ field.field.label }}</label>
+
+    <div class="col-sm-5">
+        {% if field.is_readonly %}
+            <p>{{ field.contents }}</p>
+        {% else %}
+            {{ field.field }}
+        {% endif %}
+        {% if not field.is_readonly and field.errors %}<!-- <span class="help-inline">{{ field.errors|striptags }}</span> -->{% endif %}
+        {% if field.field.help_text %}
+          <!--   <span class="help-block">{{ field.field.help_text|safe }}</span> -->
+        {% endif %}
+    </div>
+{% endif %}
